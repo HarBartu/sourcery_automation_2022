@@ -3493,7 +3493,903 @@ data.forEach(version => {
   
   }); 
 
+  test.describe(version + ': Concatenate', () => {
+
+    //#region legalInputs
+
+    test('Should be able to concatenate two positive integers 2 + 3 = 23', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
   
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('23');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two positive floats 8.5 and 0.5 = 8.50.5', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('8.5');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('0.5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('8.50.5');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate positive integer and positive float 2 and 3.2 = 23.2', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('23.2');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two negative integers -7 and -5 = -7-5', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-7');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-7-5');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two negative floats -9.9 and -3.3 = -9.9-3.3', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-9.9');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-3.3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-9.9-3.3');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate negative integer and negative float -8 and -2.5 = -8-2.5', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-8');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-2.5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-8-2.5');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate negative and positive integers -2 and 3 = -23', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-23');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate negative integer and positive float -2 and 3.2 = -23.2', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-23.2');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate negative float and positive float -2.8 and 3.2 = -2.83.2', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2.8');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-2.83.2');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should return first number as answer if second number is not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('6aa');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('6aa');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should return second number as answer if first number is not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('6aa');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('6aa');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should give empty answer if no numbers are provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveText('');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two strings made of english alphabet "aaa" + "BBB" = "aaaBBB"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('aaa');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('BBB');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('aaaBBB');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two strings made of special symbols "!#@$" + "*&^*" = "!#@$*&^*"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('!#@$');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('*&^*');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('!#@$*&^*');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two strings made of complex special symbols "γεØÆ" + "败敗" = "γεØÆ败敗"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('γεØÆ');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('败敗');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('γεØÆ败敗');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate two strings that contain escape symbols "\\n\\t\"" + "\\r\'" = "\\n\\t\"\\r\'"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('\\n\\t\"');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('\\r\'');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('\\n\\t\"\\r\'');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should be able to concatenate string made of english alphabet, special symbols and escape symbols with float "ABC\\n@$Æ" + -19.24 = "ABC\\n@$Æ-19.24"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('ABC\\n@$Æ');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-19.24');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('ABC\\n@$Æ-19.24');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    //#endregion
+
+    //#region illegalInputs
+
+    test('Should only accept 10 characters when first number input is longer "0123456789aa" and "bbb" = "0123456789bbb"', async ({ page }) => {
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('0123456789aa');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('bbb');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('0123456789bbb');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should only accept 10 characters when second number input is longer "bbb" and "0123456789aaa" = "bbb0123456789"', async ({ page }) => {
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('bbb');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('0123456789aa');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('bbb0123456789');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+
+    test('Should only accept 10 characters when both numbers input is longer "0123456789bbb" and "0123456789aaa" = "01234567890123456789"', async ({ page }) => {
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('0123456789bbb');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('0123456789aaa');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[4]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('01234567890123456789');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "concatenate" operation';
+      }
+    });
+    //#endregion
+  
+  }); 
+
+
 
 
 });
