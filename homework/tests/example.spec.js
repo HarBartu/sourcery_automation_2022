@@ -2695,6 +2695,806 @@ data.forEach(version => {
   
   });
 
+  test.describe(version + ': Divide', () => {
+
+    //#region legalInputs
+
+    test('Should be able to divide two positive integers 2 / 3 = 0.6666666666666666', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('0.6666666666666666');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide two positive floats 8.5 / 0.5 = 17', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('8.5');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('0.5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('17');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide two positive floats 18.6 / 2.4 = 7.75', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('18.6');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('2.4');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('7.75');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide positive integer and positive float 2 / 3.2 = 0.625', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('0.625');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide two negative integers -7 / -5 = 1.4', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-7');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('1.4');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide two negative floats -9.9 / -3.3 = 3', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-9.9');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-3.3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('3');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide two negative floats -9.8 / -1.6 = 6.125', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-9.8');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-1.6');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('6.125');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide negative integer and negative float -8 / -2.5 = 3.2', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-8');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('-2.5');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('3.2');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide negative and positive integers -2 / 3 = -0.6666666666666666', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-0.6666666666666666');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide negative integer and positive float -2 / 3.2 = -0.625', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-0.625');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should be able to divide negative float and positive float -2.8 / 3.2 = -0.875', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2.8');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('3.2');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('-0.875');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should return 0 as answer if first number is not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('6');
+      }
+      else{
+        throw "Second number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#numberAnswerField')).toHaveValue('0');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    //#endregion
+
+    //#region illegalInputs
+
+    test('Should give error "Divide by zero error!" if no numbers are provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Divide by zero error!');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should give error "Divide by zero error!" if second number is not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('-2.7');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Divide by zero error!');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should give error "Divide by zero error!" if second number is 0', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('8.7');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('0');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Divide by zero error!');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should throw error "Number 1 is not a number" if first number is "a" and second not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('a');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Number 1 is not a number');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should throw error "Number 2 is not a number" if second number is "a" and first not provided', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('a');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Number 2 is not a number');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    test('Should throw error "Number 1 is not a number" if both numbers are "a"', async ({ page }) => {
+      
+      await page.selectOption('#selectBuild', { label: version});
+
+      if (await page.locator('#number1Field').isVisible())
+      {
+        await page.locator('#number1Field').type('a');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#number2Field').isVisible())
+      {
+        await page.locator('#number2Field').type('a');
+      }
+      else{
+        throw "First number input field not working/missing";
+      }
+
+      if (await page.locator('#selectOperationDropdown').isVisible())
+      {
+        await page.selectOption('#selectOperationDropdown', {label: ops[3]});
+      }
+      else{
+        throw "Operation selection field not working/missing";
+      }
+    
+      if (await page.locator('#calculateButton').isVisible())
+      {
+        await page.locator('#calculateButton').click();
+      }
+      else{
+        throw "Calculate button not working/missing";
+      }
+  
+      try
+      {
+        await expect(page.locator('#errorMsgField')).toBeVisible();
+        await expect(page.locator('#errorMsgField')).toHaveText('Number 1 is not a number');
+      }
+      catch(e)
+      {
+        throw 'Incorrect "divide" operation';
+      }
+    });
+
+    //#endregion
+  
+  }); 
+
+  
+
 
 });
 
